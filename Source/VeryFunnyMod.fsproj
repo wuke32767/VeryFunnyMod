@@ -26,8 +26,8 @@
     <Compile Include="Entities\SampleEntity.fs" />
     <Compile Include="Entities\SampleSolid.fs" />
     <Compile Include="Triggers\SampleTrigger.fs" />
+    <None Include="FSharp.Core.dll" />
   </ItemGroup>
-  <ItemGroup />
 
   <ItemGroup>
     <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" />
@@ -57,6 +57,11 @@
   <Target Name="CopyFiles" AfterTargets="Build">
     <Copy SourceFiles="$(OutputPath)\$(AssemblyName).dll" DestinationFolder="..\bin" />
     <Copy SourceFiles="$(OutputPath)\$(AssemblyName).pdb" DestinationFolder="..\bin" />
+      <Copy SourceFiles="FSharp.Core.dll" DestinationFolder="..\bin" />
+  
+
+      <Copy SourceFiles="FSharp.Core.dll" DestinationFolder="..\bin" />
+
   </Target>
 
   <PropertyGroup>
