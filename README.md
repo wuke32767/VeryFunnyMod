@@ -1,4 +1,4 @@
-# VeryBasicMod
-> *funny*
+# VeryFunnyMod
+> *basic*
 
-Implements a sample Celeste mod, but in Visual Basic, the greatest language of all time.
+Implements a sample Celeste mod, but in F#, the greatest language of all time.

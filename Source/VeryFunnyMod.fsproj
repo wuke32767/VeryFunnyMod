@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <AssemblyName>VeryFunnyMod</AssemblyName>
+    <RootNamespace>Celeste.Mod.VeryFunnyMod</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <CelestePrefix Condition="'$(CelestePrefix)' == '' And Exists('..\..\..\Celeste.dll')">..\..\..</CelestePrefix>
+    <CelestePrefix Condition="'$(CelestePrefix)' == ''">lib-stripped</CelestePrefix>
+  </PropertyGroup>
+
+  <!--Disable "Copy Local" for all references-->
+  <ItemDefinitionGroup>
+    <PackageReference PrivateAssets="all" ExcludeAssets="runtime" />
+    <Reference Private="false" />
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Compile Include="VeryFunnyModSaveSettings.fs" />
+    <Compile Include="VeryFunnyModSaveSession.fs" />
+    <Compile Include="VeryFunnyModSaveData.fs" />
+    <Compile Include="VeryFunnyModModule.fs" />
+    <Compile Include="Entities\SampleActor.fs" />
+    <Compile Include="Entities\SampleEntity.fs" />
+    <Compile Include="Entities\SampleSolid.fs" />
+    <Compile Include="Triggers\SampleTrigger.fs" />
+  </ItemGroup>
+  <ItemGroup />
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" />
+    <PackageReference Include="MonoMod.RuntimeDetour" Version="25.0.2" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="MonoMod.Patcher" Version="25.0.0-prerelease.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="$(CelestePrefix)\Celeste.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="$(CelestePrefix)\MMHOOK_Celeste.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="$(CelestePrefix)\FNA.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="8.0.200">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; compile; build; native; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <Copy SourceFiles="$(OutputPath)\$(AssemblyName).dll" DestinationFolder="..\bin" />
+    <Copy SourceFiles="$(OutputPath)\$(AssemblyName).pdb" DestinationFolder="..\bin" />
+  </Target>
+
+  <PropertyGroup>
+    <PathMap>$(MSBuildProjectDirectory)=VeryFunnyMod/</PathMap>
+  </PropertyGroup>
+
+</Project>
