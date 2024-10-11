@@ -14,6 +14,8 @@ type VeryFunnyModModule() as this =
         and set (value: VeryFunnyModModule) = VeryFunnyModModule._Instance <- value
 
     override this.SettingsType: Type = typeof<VeryFunnyModSettings>
+    override this.SessionType: Type = typeof<VeryFunnyModSession>
+    override this.SaveDataType: Type = typeof<VeryFunnyModSaveData>
 
     [<DefaultValue>]
     val mutable private _Settings: VeryFunnyModSettings

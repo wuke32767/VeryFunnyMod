@@ -18,8 +18,8 @@
     <Reference Private="false" />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Compile Include="VeryFunnyModSaveSettings.fs" />
-    <Compile Include="VeryFunnyModSaveSession.fs" />
+    <Compile Include="VeryFunnyModSettings.fs" />
+    <Compile Include="VeryFunnyModSession.fs" />
     <Compile Include="VeryFunnyModSaveData.fs" />
     <Compile Include="VeryFunnyModModule.fs" />
     <Compile Include="Entities\SampleActor.fs" />
@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.1" PrivateAssets="all" />
     <PackageReference Include="MonoMod.RuntimeDetour" Version="25.0.2" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="MonoMod.Patcher" Version="25.0.0-prerelease.2" />
   </ItemGroup>
@@ -57,15 +56,12 @@
   <Target Name="CopyFiles" AfterTargets="Build">
     <Copy SourceFiles="$(OutputPath)\$(AssemblyName).dll" DestinationFolder="..\bin" />
     <Copy SourceFiles="$(OutputPath)\$(AssemblyName).pdb" DestinationFolder="..\bin" />
-      <Copy SourceFiles="FSharp.Core.dll" DestinationFolder="..\bin" />
-  
-
-      <Copy SourceFiles="FSharp.Core.dll" DestinationFolder="..\bin" />
-
+    <Copy SourceFiles="FSharp.Core.dll" DestinationFolder="..\bin" />
   </Target>
 
   <PropertyGroup>
     <PathMap>$(MSBuildProjectDirectory)=VeryFunnyMod/</PathMap>
   </PropertyGroup>
+
 
 </Project>
